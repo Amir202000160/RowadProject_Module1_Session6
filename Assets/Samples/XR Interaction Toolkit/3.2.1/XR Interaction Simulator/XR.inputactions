@@ -1,0 +1,47 @@
+{
+    "version": 1,
+    "name": "XR",
+    "maps": [
+        {
+            "name": "XRC",
+            "id": "6ba310e8-90f9-4712-a82d-3e27a83a4aff",
+            "actions": [
+                {
+                    "name": "Trigger",
+                    "type": "Button",
+                    "id": "807d5ea4-19a4-409c-ab54-1102176d74fc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b64bb946-8ce4-45c4-abe5-f492cec8ecba",
+                    "path": "<OculusTouchController>/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "XRC",
+            "bindingGroup": "XRC",
+            "devices": [
+                {
+                    "devicePath": "<XRController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
