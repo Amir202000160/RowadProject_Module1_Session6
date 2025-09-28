@@ -1,8 +1,10 @@
 # RowadProject
 The pupose of this project is to understand the Controller RayCasting In VR 
 The Steps:-
-1. Make a new Scene (Remember to Delete Main Camera)
-2. get from the starter assets( XR Origin (XR Rig) - XR Interaction manager - Event System)
+1. Make a new Scene (named as you like ... let's say it's name (Session6))
+  1.1.Remember to Delete Main Camera
+2. get from the starter assets( XR Origin (XR Rig) - XR Interaction manager - Event System -    XR Device Simulator)
+  2.1. go back to your Scene (Session6) and make a gameObject Called(VR) and put ( XR Origin   (XR Rig) - XR Interaction manager - Event System - XR Device Simulator) as a childern for GameObject (VR)
 3. Make your own Environment
 4. make a script called "SetupRayInteractors"
     4.1. make 2 Serializedfield for Left & Right Controllers
@@ -14,7 +16,8 @@ The Steps:-
         4.3.2. define the start tranform for the ray to begain form
         4.3.4. Add XRRayInteractor line Visual in spector
         4.3.5. define line width 
-5. make a gameobject called RayCastMnager and drag and drop the SetupRayInteractors script on the gameObject then assign the L&R Controllers in the spector 
+        4.3.6. define the layer of rayCast by "Lamp"
+5. make a gameobject called RayCastMnager and drag and drop the SetupRayInteractors script on the gameObject then assign the L&R Controllers in the spector by drag and Drop 
 
 NOW.... let's make Inputs to connect to the Controllers
 
@@ -27,26 +30,31 @@ NOW.... let's make Inputs to connect to the Controllers
                         ctx-------> CallBackContext
         6.4.2. make action.canceled that make rayInteractor.enabled =false
                         ctx-------> CallBackContext
-7.In the sepctor, assign VRInptManager to Left and Right Contorllers gameObjects
+7.In the sepctor, assign VRInptManager Script to Left and Right Contorllers gameObjects as a Component By Drag and drop the Script on Left and Right Contorllers gameObjects.
 8.Search in the project  tab about XRI Left and Right Interaction/Activation
-9.aaign XRI Left Interaction/activation to left contorller and same as for Right Contorlller
+9.assign XRI Left Interaction/activation to left contorller and same as for Right Contorlller
+by drag and drop  XRI Left Interaction/activation and right ib VRInputManager Component on the Controllers gameObjects
+
    TEST IT ONT IN SPECTOR (In PlaySettings, make Input manager both)
 
 And now for Target code 
 
-10. in the scene make a cube object and name it (Target)
-11. add XR Simple Interactor to the targe gameObject
+10. in your scene make a cube object and name it (Target)
+11. add XR Simple Interactor to the targe gameObject as a Component (Add Component)
 12. make a script named (SampleTarget)
     12.1. make 2 private serialedfield materials 
         there names are defaultmaterial and hitmaterial
     12.2. make serialedfield for XRRayInteractable 
     12.3. make private attribute for meshRender for the target
     12.4. make attribute privte XRSimpleInteractor 
-    12.5. in start() method 
+    12.5. in Awake() method 
         12.5.1. GetComponent for meshRender and for XRSimpleInteractor and place them in the Inspector or it will give error of nullReference
-        12.5.2. make 2 AddListeners for the Interactable one for hoverEntered and one for hoverExit 
-        12.5.3. make 2 methods (OnHoverEnter() - OnHoverExit)
-        12.5.4. in the methods make the material changes
+    12.6. in Enable() method
+        12.6.1. Call 2 addListeners one for OnHoverEnter and another for OnHoverExit
+    12.7. in Start()
+        12.7.1. make the Material of meshRender of the Target gameObject = defaultMaterial
+    12.8. make 2 methods (OnHoverEnter() - OnHoverExit)
+        12.8.1. in the methods make the material changes
         (Do not forget to OnDisable to prevent memory leak)
 13. attach the script (SimpleTarget) to target gameObject in the spector and assign all materials
 
