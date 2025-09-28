@@ -185,22 +185,18 @@ Attach `VRInputManager.cs`  to each Controller.
 
 ---
 
+
+
+
+
+
+
+
+
 ✅ Now you have a **robust VR Raycasting demo**:
 
-* **Controller Rays** → appear on input.
-* **Ray Visuals** → configurable material/width.
-* **Interactive Target** → feedback on hover.
 
 
-Perfect—that “building blocks” style is exactly how we’ll do it.
-Below is a **from-scratch, block-by-block lab**. Each block is a tiny, testable slice. You (and your students) can stop after any block and still have a working scene. Every block has:
-
-* **Goal** (what we’re adding)
-* **Editor steps** (click-by-click)
-* **Code** (copy–paste)
-* **Why** (plain English)
-* **Mini-test** (how to verify)
-* **Common mistakes** (quick fixes)
 
 Stack: **Unity 6.2.2f1**, **OpenXR**, **XR Plug-in Management 4.5.1**, **XR Interaction Toolkit (XRI) 3.2.1**, **Input System**.
 
