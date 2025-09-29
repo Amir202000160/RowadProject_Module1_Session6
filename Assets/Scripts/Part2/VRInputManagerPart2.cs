@@ -37,7 +37,6 @@ public class VRInputManagerPart2 : MonoBehaviour // Inherit from MonoBehaviour t
     {
         // Get the XRRayInteractor component that's attached to this same GameObject
         // This will be null if no XRRayInteractor is found, so make sure to add one!
-        Lamb = GetComponent<MeshRenderer>();
         isLambOn = false;
         
     
