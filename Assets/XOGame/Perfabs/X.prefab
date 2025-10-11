@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4584983581310346717}
   - component: {fileID: 8563952607970229958}
   - component: {fileID: 7596478833651658722}
+  - component: {fileID: 3912213206211346634}
   m_Layer: 0
   m_Name: X
   m_TagString: Untagged
@@ -149,7 +150,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -313,7 +314,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da2200d768b50f408dee9234235d992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PieceSpawnerGrab
-  pieceType: 1
+  pieceType: 0
+  ClonePieceObject: {fileID: 0}
+--- !u!114 &3912213206211346634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189300720497494999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5638b81fb971bf64ea8385c47f802703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetInPos
+  pieceSpawnerGrab: {fileID: 7596478833651658722}
 --- !u!1 &6475545667322346002
 GameObject:
   m_ObjectHideFlags: 0

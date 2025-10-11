@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -19,7 +20,8 @@ public class PieceSpawnerGrab : MonoBehaviour
 {
     [Tooltip("Set the type of piece this spawner should generate.")]
     public PieceType pieceType = PieceType.O; // Default to O, but must be set on X spawner
-
+   [HideInInspector] public GameObject ClonePieceObject; // The newly spawned piece instance
+    public static PieceSpawnerGrab instance; // Static reference for easy access if needed
     // A reference to the XRGrabInteractable component on this object
     private XRGrabInteractable grabInteractable;
 
@@ -62,22 +64,23 @@ public class PieceSpawnerGrab : MonoBehaviour
         grabInteractable.interactionManager.SelectExit(interactor, grabInteractable);
 
         // 3. Create a new instance (the actual piece the player will place)
-        GameObject newPieceObject = Instantiate(gameObject, transform.position, transform.rotation);
-        newPieceObject.GetComponent<Rigidbody>().isKinematic = false; 
-        newPieceObject.GetComponent<Rigidbody>().useGravity = true; 
+        ClonePieceObject = Instantiate(gameObject, transform.position, transform.rotation);
+        ClonePieceObject.GetComponent<Rigidbody>().isKinematic = false;
+        ClonePieceObject.GetComponent<Rigidbody>().useGravity = true;
+
 
         // 4. Set up the new piece
-        
+
         // Remove this script from the clone so it doesn't try to spawn another piece when grabbed later
-        Destroy(newPieceObject.GetComponent<PieceSpawnerGrab>());
-        
+        Destroy(ClonePieceObject.GetComponent<PieceSpawnerGrab>());
+
         // Mark the clone for identification in the scene hierarchy
-        newPieceObject.name = $"{pieceType.ToString()}_ActivePiece";
+        ClonePieceObject.name = $"{pieceType.ToString()}_ActivePiece";
 
         // 5. Transfer the grab to the new piece
         // This tells the interactor to start grabbing the newly created piece instead.
         // The player doesn't notice the hand-off.
-        XRGrabInteractable newGrabInteractable = newPieceObject.GetComponent<XRGrabInteractable>();
+        XRGrabInteractable newGrabInteractable = ClonePieceObject.GetComponent<XRGrabInteractable>();
 
         if (newGrabInteractable != null)
         {
@@ -90,5 +93,7 @@ public class PieceSpawnerGrab : MonoBehaviour
         {
             Debug.LogError("The cloned piece is missing the XRGrabInteractable component! Check the prefab setup.");
         }
+
     }
+    
 }
